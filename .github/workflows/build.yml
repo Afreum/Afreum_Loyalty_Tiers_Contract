@@ -34,7 +34,10 @@ jobs:
 
       - name: Install Stellar CLI
         run: |
-          curl -fsSL https://github.com/stellar/stellar-cli/releases/latest/download/stellar-cli-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          URL=$(curl -fsSL https://api.github.com/repos/stellar/stellar-cli/releases/latest \
+            | python3 -c "import sys,json; [print(a['browser_download_url']) for a in json.load(sys.stdin)['assets'] if 'x86_64-unknown-linux-gnu.tar.gz' in a['name']]" \
+            | head -1)
+          curl -fsSL "$URL" | tar -xz
           sudo mv stellar /usr/local/bin/stellar
 
       - name: Build WASM
