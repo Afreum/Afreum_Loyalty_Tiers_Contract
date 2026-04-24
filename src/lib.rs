@@ -11,10 +11,9 @@ use soroban_sdk::{
 
 use types::{DataKey, LoyaltyTier};
 
-contractmeta!(
-    key = "Description",
-    val = "Afreum Loyalty Tier Contract v0.1.0"
-);
+contractmeta!(key = "Description", val = "Afreum Loyalty Tier Contract v0.1.0");
+contractmeta!(key = "source_repo",  val = "github:Afreum/Afreum_Loyalty_Tiers_Contract");
+contractmeta!(key = "home_domain",  val = "afreum.com");
 
 /// How many seconds into the future a payload timestamp may be.
 /// Guards against payloads signed with far-future timestamps that would
